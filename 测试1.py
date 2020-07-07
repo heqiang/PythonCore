@@ -1,10 +1,19 @@
 # -*- coding:utf-8 -*-
+import re
+def person(name, age, sex, job):
+    def walk():
+        print("ok")
 
-from selenium  import webdriver
+    data = {
+        'name': name,
+        'age': age,
+        'sex': sex,
+        'job': job,
+        'walk': walk()
+    }
 
-url = 'https://www.pinterest.com/'
-driver = webdriver.Firefox()
+    return data
 
-for img  in driver.find_elements_by_xpath("//div[@class='TPW xEW']//img"):
-       img_src = img.get_attribute("src")
-       print(img_src)
+a =person("hq",15,"男","程序员")
+a["walk"]
+

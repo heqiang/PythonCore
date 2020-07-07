@@ -5,10 +5,11 @@ b=a
 c=copy.copy(a)
 d=copy.deepcopy(a)
 a.append(5)
+b.append(3)
 print(a)
 print(b)
+print(c)
 a[4].append('c')
 a[4][2].append(3)
-print(a)
-print(b)
+
 
