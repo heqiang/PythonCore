@@ -1,0 +1,18 @@
+
+主从复制
+master端可读可写 slave端 只能读
+第一种方式:
+    step1 开启一个redis 服务 作为一个master端
+    step2 开启一个redis服务  使用命令 redis-service.exe  redis.windows.conf <--port xxxx>--slaveof <master-ip> <master-port>
+第二种方式:
+     step1: 开启两个redis服务
+     step2: 随意选择连接一个端口 redis-cli.exe -p <port> 连接成功后 此时连接的服务是一个master服务
+     step3: 将刚连接的master转换为slave  使用命令 slaveof <master-ip> <master-port>
+     step4(看需求): 将slave转换回master 使用命令 slaveof no one
+第三种方式:
+     修改配置文件
+
+哨兵模式
+    redis Sectinel 是一个分布式系统
+
+主从复制 + sentinel哨兵值解决了读性能和高可用的问题

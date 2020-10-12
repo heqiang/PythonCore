@@ -1,0 +1,16 @@
+相关文档：http://doc.redisfans.com/topic/sentinel.html
+添加配置文件 sentinel.conf
+        sentinel monitor mymaster 127.0.0.1 6379 2
+        sentinel down-after-milliseconds mymaster 60000 哨兵监控时master端在60000毫秒内没有响应
+        sentinel failover-timeout mymaster 180000
+        sentinel parallel-syncs mymaster 1
+
+         """
+            quorum 参数为数字 意为需要多少个哨兵认为master端失效后才算失效
+            这个配置项指定了在发生failover主备切换时最多可以有多少个slave同时对新的master进行 同步，这个数字越小，
+            完成failover所需的时间就越长，但是如果这个数字越大，就意味着越 多的slave因为replication而不可用。
+            可以通过将这个值设为 1 来保证每次只有一个slave 处于不能处理命令请求的状态
+         """
+启动命令
+    redis-sentnel sentinel.conf
+    redis-server.exe sentinel.conf --sentinel
